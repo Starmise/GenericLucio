@@ -39,4 +39,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Aplicar el efecto del item al jugador
+    public void ApplyItemEffect(ItemModel<float> item, float duration)
+    {
+        StartCoroutine(SpeedBoostCoroutine(item.itemEffect, duration));
+    }
+
+    private IEnumerator SpeedBoostCoroutine(float boostAmount, float duration)
+    {
+        speed += boostAmount;
+        yield return new WaitForSeconds(duration);
+        speed -= boostAmount;
+    }
+
 }
