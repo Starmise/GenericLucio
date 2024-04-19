@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController: MonoBehaviour
 {
-
     private EnemyModel<int> model;
 
     public float movementSpeed = 10f;
@@ -12,14 +11,22 @@ public class EnemyController: MonoBehaviour
     public int enemyLevel;
     private float initialPositionX;
 
+    public GameObject enemyPrefab;
+    public SpawnControllerBase enemySpawner;
+
     private void Start()
     {
         Initialize(enemyLevel);
+
+        if (enemySpawner == null)
+        {
+            enemySpawner = FindObjectOfType<SpawnControllerBase>(); // Busca el SpawnControllerBase en la escena
+        }
     }
 
-    public void Initialize(int enemylvl)
+    public void Initialize(int enemyLvl)
     {
-        model = new EnemyModel<int>(enemylvl);
+        model = new EnemyModel<int>(enemyLvl);
         initialPositionX = transform.position.x;
     }
 
