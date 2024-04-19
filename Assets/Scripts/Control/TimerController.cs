@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class TimerController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     float elapsepTime;
